@@ -18,6 +18,7 @@ class CarsSeeder extends Seeder
     {
         DB::table("cars")->truncate();
         $faker = Factory::create();
+        $faker->addProvider(new \Faker\Provider\Fakecar($faker));
         $data=[];
         for($i=0; $i<30; $i++){
             $data[] = ["vin"=>$faker->unique()->randomNumber, "model_id" => $faker->numberBetween(1, 20), "description" => $faker->text, "color" => $faker->colorName, "price" => $faker->randomNumber, "brand_id" => null];
