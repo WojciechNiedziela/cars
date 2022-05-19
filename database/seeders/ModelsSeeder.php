@@ -20,7 +20,7 @@ class ModelsSeeder extends Seeder
         $faker = Factory::create();
         $faker->addProvider(new \Faker\Provider\Fakecar($faker));
         for($i=0;$i<60;$i++){
-            $data[]=['name'=>$faker->vehicleBrand];
+            $data[]=['name'=>$faker->vehicleModel];
         }
         DB::table("models")->insert($data);
     }

@@ -45,6 +45,7 @@
                     @endforeach
                 </tbody>
             </table>
+            <a href="/home">Strona główna</a>
         </div>
     </div>
 </body>
