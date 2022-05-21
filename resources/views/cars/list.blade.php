@@ -12,7 +12,30 @@
     <div class="conatiner">
         <h3>Samochody</h3>
         <div class="cars">
-        
+            <div class="filtrs">
+                <form action="{{ route('cars.list') }}" method="get">
+                    <div style="display: inline-block; margin:10px;">
+                        <label for="vin">Vin</label>
+                        <input type="text" name="vin" id="vin">
+                    <div>
+                    <div style="display: inline-block; margin:10px;">
+                        <label for="color">Kolor</label>
+                        <input type="text" name="color" id="color">  
+                    <div>
+                    <div style="display: inline-block; margin:10px;">
+                        <label for="minPrice">Minimalna cena</label>
+                        <input type="text" name="minPrice" id="minPrice">  
+                    <div>
+                    <div style="display: inline-block; margin:10px;">
+                        <label for="description">Opis</label>
+                        <input type="text" name="description" id="description">  
+                    <div>
+                    <div>
+                        <button type="submit">Filtruj</button>
+                    </div>
+                </form>
+            </div>
+            
             <table>
                 <thead>
                     <tr>
