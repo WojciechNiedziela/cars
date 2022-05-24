@@ -16,11 +16,8 @@ class CarService
 
     public function show($id)
     {
-
-        // dump($this->carModel->find($id));
-        //dd($this->carModel->with('model')->find($id));
         return $this->carModel->with('brand')->find($id);
-        //return $this->carModel->with('brand')->with('model')->find($id);
+        
     }
 
     public function destroy($id)
@@ -28,5 +25,10 @@ class CarService
 
         //return $this->carModel->where('id', $id)->delete();
         return $this->carModel->destroy($id);
+    }
+
+    public function create($car)
+    {
+        $this->carModel::create($car);
     }
 }

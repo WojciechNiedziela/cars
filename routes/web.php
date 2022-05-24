@@ -28,6 +28,11 @@ Route::group(
         Route::get('/models', [BrandsController::class, 'models'])->name('models');
 
         Route::post('destroy/{id}', [CarController::class, 'destroy'])->name('destroy');
+
+        Route::get('/create', [CarController::class, 'getCreateView'])->name('getCreateView');
+
+        Route::post('/create', [CarController::class, 'create'])->name('create');
+
     }
 
 );

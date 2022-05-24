@@ -15,6 +15,14 @@
         <ul>
             <li>Marka: {{ $brand->name}}</li>
         </ul>
+        <div>
+            <ol>
+            @foreach ($brand->cars as $car)
+                    <li> {{ $car->vin }} </li>
+                @endforeach
+            </ol>
+            
+        </div>
     </div>
 </body>
 

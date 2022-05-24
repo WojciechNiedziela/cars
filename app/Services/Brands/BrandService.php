@@ -17,10 +17,8 @@ class BrandService
     public function show($id)
     {
 
-        // dump($this->carModel->find($id));
-        //dd($this->carModel->with('model')->find($id));
-        return $this->brandModel->find($id);
-        //return $this->carModel->with('brand')->with('model')->find($id);
+        return $this->brandModel->with('cars')->find($id);
+
     }
 
     public function destroy($id)

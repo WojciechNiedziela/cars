@@ -9,6 +9,8 @@ class Car extends EloquentModel
 {
     use HasFactory;
 
+    protected $fillable=['vin', 'description', 'color', 'price'];
+
     public function brand()
     {
         return $this->belongsTo(Brand::class);
