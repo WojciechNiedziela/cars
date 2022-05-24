@@ -25,12 +25,20 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $brand->name }}</td>
+
+                            <td>
+                                <a href="{{ route('brands.show', ['id' => $brand->id]) }}">Szczegóły</a> 
+                            </td>
+                            
                             <td>
                                 <form action="{{ route('brands.destroy', ['id' => $brand->id]) }}" method="get">
                                     <button type="submit">Usuń</button>
                                 </form>
 
                             </td>
+
+                            
+
                         </tr>
                     @endforeach
                 </tbody>

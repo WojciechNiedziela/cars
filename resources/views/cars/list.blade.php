@@ -60,7 +60,7 @@
                                 <a href="{{ route('cars.show', ['id' => $car->id]) }}">Szczegóły</a> 
                             </td>
                             <td>
-                                <form action=" {{ route('cars.destroy', ['id' => $car->id]) }} " method="get">
+                                <form action=" {{ route('cars.destroy', ['id' => $car->id]) }} " method="post">
                                     <button type ="submit">Usuń<b/utton>    
                                 <form>
                             </td>

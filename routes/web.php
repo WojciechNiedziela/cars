@@ -27,7 +27,7 @@ Route::group(
 
         Route::get('/models', [BrandsController::class, 'models'])->name('models');
 
-        Route::get('destroy/{id}', [CarController::class, 'destroy'])->name('destroy');
+        Route::post('destroy/{id}', [CarController::class, 'destroy'])->name('destroy');
     }
 
 );
@@ -36,6 +36,9 @@ Route::group(
     ['prefix' => '/brands/', 'as' => 'brands.'],
     function () {
         Route::get('/list', [BrandsController::class, 'list'])->name('list');
+
+        Route::get('/show/{id}', [BrandController::class, 'show'])->name('show');
+
         Route::get('destroy/{id}', [BrandController::class, 'destroy'])->name('destroy');
     }
 );
@@ -44,6 +47,9 @@ Route::group(
     ['prefix' => '/models/', 'as' => 'models.'],
     function () {
         Route::get('/list', [ModelsController::class, 'list'])->name('list');
+
+        Route::get('/show/{id}', [ModelController::class, 'show'])->name('show');
+
         Route::get('destroy/{id}', [ModelController::class, 'destroy'])->name('destroy');
     }
 );

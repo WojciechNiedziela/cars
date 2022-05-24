@@ -10,15 +10,10 @@
 
 <body>
     <div class="container">
-        <h1>{{ $car->vin }} </h1>
+        <h1>{{ $brand->name }} </h1>
         <h3>Szczegóły: </h3>
         <ul>
-            <li>Kolor: {{$car->color}}</li>
-            <li>Cena: {{$car->price}}</li>
-            <li>Opis: {{ $car->description}}</li>
-            <li>Marka: {{ $car->brand->name}}</li>
-            <li>Model: {{ $car->model->name}}</li>
-
+            <li>Marka: {{ $brand->name}}</li>
         </ul>
     </div>
 </body>
