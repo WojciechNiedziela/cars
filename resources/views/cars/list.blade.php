@@ -68,6 +68,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div>
+                <a href=" {{ route('cars.create') }} "> Stwórz </a> 
+            </div>
             <a href="/home">Strona główna</a>
         </div>
     </div>

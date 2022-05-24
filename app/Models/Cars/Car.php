@@ -9,7 +9,7 @@ class Car extends EloquentModel
 {
     use HasFactory;
 
-    protected $fillable=['vin', 'description', 'color', 'price'];
+    protected $fillable=['vin', 'description', 'color', 'price', 'registration_date', 'description', 'created_at', 'brand_id', 'model_id'];
 
     public function brand()
     {
