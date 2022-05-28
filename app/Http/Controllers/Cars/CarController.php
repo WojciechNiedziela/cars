@@ -44,4 +44,19 @@ class CarController extends Controller
         return redirect()->route('cars.list');
 
     }
+
+    public function getUpdateView($id)
+    {
+        $car = $this->carService->show($id);
+        //dd($car);
+        return view('cars.update', ['car' => $car]);
+    }
+    public function update($id, Request $request)
+    {
+        $newCar=$request->all();
+        $this->carService->update($id, $newCar);
+        return redirect()->route('cars.list');
+
+        //dd($request->all());
+    }
 }

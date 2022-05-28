@@ -33,6 +33,10 @@ Route::group(
 
         Route::post('/create', [CarController::class, 'create'])->name('create');
 
+        Route::get('/update/{id}', [CarController::class, 'getUpdateView'])->name('getUpdateView');
+
+        Route::post('/update/{id}', [CarController::class, 'update'])->name('update');
+
     }
 
 );

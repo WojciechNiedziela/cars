@@ -8,6 +8,9 @@
 </head>
 <body>
     <div class="container">
+        <div class="nav">
+            <a href="{{route('cars.list')}}"> Samochody </a>
+        </div>
         <form action=" {{ route('cars.create') }}" method="post">
         <div>
             <label for="">Vin</label>
