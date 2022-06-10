@@ -3,7 +3,7 @@
 namespace App\Services\Cars;
 
 use App\Models\Cars\Car;
-//use Illuminate\Support\Facades\DB;
+
 
 class CarsService
 {

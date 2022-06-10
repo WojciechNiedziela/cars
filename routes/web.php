@@ -7,6 +7,7 @@ use App\Http\Controllers\Brands\BrandsController;
 use App\Http\Controllers\Brands\BrandController;
 use App\Http\Controllers\Models\ModelsController;
 use App\Http\Controllers\Models\ModelController;
+use App\Http\Controllers\Users\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,49 +19,71 @@ use App\Http\Controllers\Models\ModelController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(
-    ['prefix' => '/cars/', 'as' => 'cars.'],
-    function () {
-        Route::get('/list', [CarsController::class, 'list'])->name('list');
+Auth::routes();
 
-        Route::get('/show/{id}', [CarController::class, 'show'])->name('show');
+Route::middleware(['auth'])->group(function(){
 
-        Route::get('/models', [BrandsController::class, 'models'])->name('models');
+    Route::group(
+        ['prefix' => '/cars/', 'as' => 'cars.'],
+        function () {
+            Route::get('/list', [CarsController::class, 'list'])->name('list');
+    
+            Route::get('/show/{id}', [CarController::class, 'show'])->name('show');
+    
+            Route::get('/models', [BrandsController::class, 'models'])->name('models');
+    
+            Route::post('destroy/{id}', [CarController::class, 'destroy'])->name('destroy');
+    
+            Route::get('/create', [CarController::class, 'getCreateView'])->name('getCreateView');
+    
+            Route::post('/create', [CarController::class, 'create'])->name('create');
+    
+            Route::get('/update/{id}', [CarController::class, 'getUpdateView'])->name('getUpdateView');
+    
+            Route::post('/update/{id}', [CarController::class, 'update'])->name('update');
+    
+        }
+    
+    );
+    
+    Route::group(
+        ['prefix' => '/brands/', 'as' => 'brands.'],
+        function () {
+            Route::get('/list', [BrandsController::class, 'list'])->name('list');
+    
+            Route::get('/show/{id}', [BrandController::class, 'show'])->name('show');
+    
+            Route::get('destroy/{id}', [BrandController::class, 'destroy'])->name('destroy');
+        }
+    );
+    
+    Route::group(
+        ['prefix' => '/models/', 'as' => 'models.'],
+        function () {
+            Route::get('/list', [ModelsController::class, 'list'])->name('list');
+    
+            Route::get('/show/{id}', [ModelController::class, 'show'])->name('show');
+    
+            Route::get('destroy/{id}', [ModelController::class, 'destroy'])->name('destroy');
+        }
+    );
 
-        Route::post('destroy/{id}', [CarController::class, 'destroy'])->name('destroy');
+    Route::group(
+        ['prefix' => '/users/', 'as' => 'users.'],
+        function () {
+    
+            Route::get('/list', [UsersController::class, 'list'])->name('list');
 
-        Route::get('/create', [CarController::class, 'getCreateView'])->name('getCreateView');
+            Route::get('/show/{id}', [UserController::class, 'show'])->name('show');
 
-        Route::post('/create', [CarController::class, 'create'])->name('create');
+        }
+    );
+    
+    Route::get('/{any}', [HomeController::class, 'homePage'])->where('any', '.*');
+    
+    
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
 
-        Route::get('/update/{id}', [CarController::class, 'getUpdateView'])->name('getUpdateView');
+});
 
-        Route::post('/update/{id}', [CarController::class, 'update'])->name('update');
-
-    }
-
-);
-
-Route::group(
-    ['prefix' => '/brands/', 'as' => 'brands.'],
-    function () {
-        Route::get('/list', [BrandsController::class, 'list'])->name('list');
-
-        Route::get('/show/{id}', [BrandController::class, 'show'])->name('show');
-
-        Route::get('destroy/{id}', [BrandController::class, 'destroy'])->name('destroy');
-    }
-);
-
-Route::group(
-    ['prefix' => '/models/', 'as' => 'models.'],
-    function () {
-        Route::get('/list', [ModelsController::class, 'list'])->name('list');
-
-        Route::get('/show/{id}', [ModelController::class, 'show'])->name('show');
-
-        Route::get('destroy/{id}', [ModelController::class, 'destroy'])->name('destroy');
-    }
-);
-
-Route::get('/{any}', [HomeController::class, 'homePage'])->where('any', '.*');

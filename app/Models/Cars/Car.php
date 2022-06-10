@@ -3,13 +3,19 @@
 namespace App\Models\Cars;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Users\User;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 class Car extends EloquentModel
 {
     use HasFactory;
 
-    protected $fillable=['vin', 'description', 'color', 'price', 'registration_date', 'description', 'created_at', 'brand_id', 'model_id'];
+    protected $fillable=['vin', 'description', 'color', 'price', 'registration_date', 'description', 'created_at', 'brand_id', 'model_id', 'user_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function brand()
     {

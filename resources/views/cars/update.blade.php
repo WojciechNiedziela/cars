@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         <form action=" {{ route('cars.update', ['id' => $car->id]) }}" method="post">
+            @csfr
         <div>
             <label for="">Vin</label>
             <input type="text" name="vin" id="vin" value = " {{ $car-> vin}}">

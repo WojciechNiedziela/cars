@@ -12,6 +12,7 @@
             <a href="{{route('cars.list')}}"> Samochody </a>
         </div>
         <form action=" {{ route('cars.create') }}" method="post">
+            @csrf
         <div>
             <label for="">Vin</label>
             <input type="text" name="vin" id="vin">

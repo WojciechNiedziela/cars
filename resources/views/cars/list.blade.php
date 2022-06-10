@@ -53,6 +53,7 @@
                         <th>Opis</th>
                         <th>Kolor</th>
                         <th>Cena</th>
+                        <th>Twórca</th>
                         <th>Szczegóły</th>
                         <th>Usuń</th>
                     </tr>
@@ -66,6 +67,12 @@
                             <td>{{ $car->color }}</td>
                             <td>{{ $car->price }}</td>
                             <td>
+                                @if($car->user)
+                                {{ $car->user->name }}
+                                @endif
+                                
+                                </td>
+                            <td>
                                 <a href="{{ route('cars.show', ['id' => $car->id]) }}">Szczegóły</a> 
                             </td>
                             <td>
@@ -73,6 +80,7 @@
                             </td>
                             <td>
                                 <form action=" {{ route('cars.destroy', ['id' => $car->id]) }} " method="post">
+                                    @csrf
                                     <button type ="submit">Usuń<b/utton>    
                                 <form>
                             </td>
