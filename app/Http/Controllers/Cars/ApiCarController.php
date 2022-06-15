@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Cars;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Cars\CarService;
+use App\Http\Requests\Cars\CreateCarRequest;
 
 
 class ApiCarController extends Controller
@@ -23,7 +24,7 @@ class ApiCarController extends Controller
         return response()->json(['car' => $car]);
     }
 
-    public function create(Request $request)
+    public function create(CreateCarRequest $request)
     {
         $car = $request->all();
         $this->carService->create($car);
