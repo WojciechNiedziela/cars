@@ -24,9 +24,10 @@ class CreateCarRequest extends FormRequest
     public function rules()
     {
         return [
-            'vin'=> 'required|registration|min:4|max:10|unique:cars',
+            'vin'=> 'required_without:registration|min:4|max:10|unique:cars',
             'registration' => 'required_without:vin|nullable',
-            // 'color' => ['required', 'min:3', 'max:6', 'in:string'],
+            'price' => 'required|integer',
+            'color' => ['required', 'min:3', 'max:6', 'string'],
         ];
     }
 
@@ -34,10 +35,12 @@ class CreateCarRequest extends FormRequest
     {
         return [
             'vin.required' => 'Vin jest wymagany',
+            'vin.unique' => 'Vin musi być unikatowy',
             'vin.min' => 'Vin jest za krotki',
-            //'color.in' => 'Kolor nie może być liczbą',
-
-
+            'vin.max' => 'Vin jest za dlugi',
+            'color.string' => 'Kolor musi być typu string',
+            'color.required' => 'Kolor jest wymagany',
+            'price.integer' => 'Cena musi być liczbą',
 
         ];
     }
