@@ -54,7 +54,15 @@ class CarController extends Controller
         $newCar=$request->all();
         $this->carService->update($id, $newCar);
         return redirect()->route('cars.list');
-
-        //dd($request->all());
     }
+
+    public function addPhoto(Request $request)
+    {
+        $file = $request->file('file');
+        $id = $request->get('id');
+        $this->carService->addPhoto($file, $id);
+        return redirect()->route('cars.show', ['id' => $id]);
+
+    }
+
 }

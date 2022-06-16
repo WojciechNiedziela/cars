@@ -37,4 +37,17 @@ class CarService
         $car = $this->show($id);
         $car->update($newCar);
     }
+
+    public function addPhoto($file, $id)
+    {
+        $fileName = $id . '.jpg';
+        $this->putToStorage($file, $fileName);
+        $car = $this->show($id);
+        $car->photo = $fileName;
+        $car->save();
+    }
+    public function putToStorage($file, $fileName)
+    {
+        $file->storeAs('public', $fileName);
+    }
 }

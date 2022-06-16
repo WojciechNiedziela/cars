@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('cars'); //robimy to jednorazowo bo byl blad i stworzylo zla tabele
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            $table->string("vin")->unique();
-            //$table->string("model_id")->nullable();
+            $table->string("vin")->unique()->nullable();
+            $table->string("registration")->nullable();
             $table->string("color")->nullable();
             $table->integer("price")->nullable()->unsigned();
             $table->date("registration_date")->nullable();

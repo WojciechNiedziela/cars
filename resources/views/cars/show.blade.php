@@ -20,6 +20,23 @@
             <li>Model: {{ $car->model->name}}</li>
 
         </ul>
+
+            @if ($car->photo)
+            <img src="/storage/{{ $car->photo }}" alt="" width="200">
+            
+            
+            @endif
+        <form action="{{ route('cars.addPhoto') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div>
+                <label for="">Załącz plik</label>
+                <input type="file" name="file" id="file" accept="image/jpeg">
+            </div>
+            <input type="hidden" name="id" value = "{{ $car->id }}">
+            <div>
+                <button type='submit'>Dodaj</button>
+            </div>
+        </form>
     </div>
 </body>
 
