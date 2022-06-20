@@ -17,7 +17,7 @@ class ApiCarsController extends Controller
 
 public function list(Request $request)
     {
-        $vin = $request->get('vin');
+        $vin = $request->get('vin') ? $request->get('vin') : "";
         $color = $request->get('color');
         $minPrice=$request->get('minPrice') ? $request->get('minPrice') : 0;
         $description = $request->get('description');
